@@ -1,69 +1,25 @@
+// src/server.js
 import express from "express";
-import { inicializaModelo } from "./utils/modelo.js";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import chatRoutes from "./routes/chat.routes.js";
+import analyzeRoutes from "./routes/analyze.routes.js";
+
+const app = express();
+app.use(express.json({ limit: "2mb" }));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
 app.use(express.static(path.join(__dirname, "../public")));
 
-
-const app = express();
-app.use(express.json());
+app.use("/chat", chatRoutes);
+app.use("/analyze", analyzeRoutes);
 
 app.get("/", (req, res) => {
   res.send("API do Chat de Viagens está no ar 🚀");
 });
 
-app.post("/chat", async (req, res) => {
-  try {
-    const { pergunta } = req.body;
-    if (!pergunta) {
-      return res.status(400).json({ erro: "Faltou o campo 'pergunta'" });
-    }
-
-    const model = await inicializaModelo("gemini-2.5-flash");
-    const result = await model.generateContent({ contents: [pergunta] });
-
-    res.json({ resposta: result.text });
-  } catch (e) {
-    console.error("Erro:", e);
-    res.status(500).json({ erro: e.message || "Erro interno" });
-  }
-});
-
-
-app.post("/analyze", async (req, res) => {
-  try {
-    const { opinioes } = req.body;
-    if (!opinioes) {
-      return res.status(400).json({ erro: "Faltou o campo 'opinioes'" });
-    }
-
-    const model = await inicializaModelo("gemini-2.5-flash");
-
-    const prompt = `
-Analise as opiniões descritas em sequência e resuma os pontos positivos e negativos.
-Depois, categorize em satisfeito, insatisfeito ou neutro, no formato:
-
-Satisfeitos: X% - N respostas
-Insatisfeitos: Y% - M respostas
-Neutros: Z% - K respostas
-
-Opiniões:
-${opinioes}
-`.trim();
-
-    const result = await model.generateContent({ contents: [prompt] });
-    res.json({ analise: result.text });
-  } catch (e) {
-    console.error("Erro:", e);
-    res.status(500).json({ erro: e.message || "Erro interno" });
-  }
-});
-
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });

@@ -1,6 +1,5 @@
 // src/services/gemini.js
 import { GoogleGenAI } from "@google/genai";
-import "dotenv/config";
 
 const ai = new GoogleGenAI({ apiKey: "AIzaSyAXBRleOPvVJrg8h7Hpkdsr_ekPJyzb_3Y" });
 
