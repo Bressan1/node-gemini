@@ -4,6 +4,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import chatRoutes from "./routes/chat.routes.js";
 import analyzeRoutes from "./routes/analyze.routes.js";
+import visionRoutes from "./routes/vision.routes.js";
 
 const app = express();
 app.use(express.json({ limit: "2mb" }));
@@ -23,3 +24,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
+
+app.use("/vision", visionRoutes);
