@@ -174,5 +174,6 @@ curl -X POST http://localhost:3000/vision/base64 \
 
 ## 👤 Autor
 
-* **Seu Nome**
+* **Eduardo Bressan**
   [LinkedIn](https://www.linkedin.com/in/eduardobressan/) · [GitHub](https://github.com/Bressan1)
+
