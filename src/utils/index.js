@@ -1,7 +1,7 @@
-import { fazerPergunta } from "./pergunta.js";
-import { perguntar } from "./perguntaLivre.js";
+import { fazerPergunta } from "../../pergunta.js";
+import { perguntar } from "../../perguntaLivre.js";
 import { consultar } from "./consultaDestino.js";
-import { processaImagem } from "./processaImagem.js"; // <-- faltava
+import { processaImagem } from "../../processaImagem.js"; // <-- faltava
 import { processaArquivo } from "./categorizador.js";
 
 async function principal() {

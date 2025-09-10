@@ -1,6 +1,6 @@
 // index.js
-import { fazerPergunta } from "./pergunta.js";
-import { inicializaModelo } from "./modelo.js";
+import { fazerPergunta } from "../../pergunta.js";
+import { inicializaModelo } from "../../modelo.js";
 
 export async function consultar() {
    const model = await inicializaModelo("gemini-2.5-flash");

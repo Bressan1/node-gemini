@@ -1,5 +1,13 @@
 import express from "express";
-import { inicializaModelo } from "./modelo.js";
+import { inicializaModelo } from "./utils/modelo.js";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../public")));
+
 
 const app = express();
 app.use(express.json());
@@ -25,7 +33,7 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// 🚨 NOVA ROTA
+
 app.post("/analyze", async (req, res) => {
   try {
     const { opinioes } = req.body;

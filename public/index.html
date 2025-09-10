@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Travel Insights AI 🌍</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Travel Insights AI 🌍</h1>
+
+  <section>
+    <h2>Pergunta livre (Chat)</h2>
+    <input id="chatInput" type="text" placeholder="Digite sua pergunta..." />
+    <button onclick="askChat()">Enviar</button>
+    <pre id="chatResult"></pre>
+  </section>
+
+  <section>
+    <h2>Analisar Feedback</h2>
+    <textarea id="feedbackInput" placeholder="Cole as opiniões aqui"></textarea>
+    <button onclick="analyzeFeedback()">Analisar</button>
+    <pre id="feedbackResult"></pre>
+  </section>
+
+  <section>
+    <h2>Visão (Imagem)</h2>
+    <input type="file" id="imageInput" />
+    <input id="imagePrompt" type="text" placeholder="Pergunta sobre a imagem (opcional)" />
+    <button onclick="analyzeImage()">Enviar Imagem</button>
+    <pre id="imageResult"></pre>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
