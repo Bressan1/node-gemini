@@ -2,7 +2,6 @@
 import { GoogleGenAI } from "@google/genai";
 
 
-const ai = new GoogleGenAI({ apiKey: "AIzaSyAXBRleOPvVJrg8h7Hpkdsr_ekPJyzb_3Y" });
 
 export async function inicializaModelo(modelo) {
   return {
@@ -26,6 +25,7 @@ export async function inicializaModelo(modelo) {
     },
   };
 }
+
 
 
 
